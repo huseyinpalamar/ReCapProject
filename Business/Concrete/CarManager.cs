@@ -40,7 +40,7 @@ namespace Business.Concrete
         public IDataResult<List<Car>> GetAll()
         {
             
-            if (DateTime.Now.Hour==14)
+            if (DateTime.Now.Hour==15)
             {
                 return new ErrorDataResult<List<Car>>(Messages.CarListingFailed);
             }
@@ -66,9 +66,18 @@ namespace Business.Concrete
 
         public IResult Update(Car car)
         {
+            if (DateTime.Now.Hour==15)
+            {
+                return new ErrorResult(Messages.CarNotUptaded);
+            }
             _carDal.Update(car);
             return new SuccessResult(Messages.CarUpdated);
         }
-       
+
+        public IDataResult<List<Car>> GetByDailyPrice(decimal min, decimal max)
+        {
+            
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c=>c.DailyPrice>=min&&c.DailyPrice<=max));
+        }
     }
 }

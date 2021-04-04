@@ -9,6 +9,7 @@ namespace Business.Constants
         public static string CarAdded = "Ekleme Başarılı";
         public static string CarDeleted = "Silme Başarılı";
         public static string CarUpdated = "Güncelleme Başarılı";
+        public static string CarNotUptaded = "Güncelleme başarısız sistem kapalı";
         public static string BrandAdded = "Ekleme Başarılı";
         public static string BrandDeleted = "Silme Başarılı";
         public static string BrandUpdated = "Güncelleme Başarılı";
