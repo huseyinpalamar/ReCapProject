@@ -13,7 +13,7 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfCarDal : EfEntityRepositoryBase<Car, ReCapContext>, ICarDal
     {
-        public List<ProductDetailDto> GetProductDetails()
+        public List<CarDetailDto> GetCarDetails()
         {
             using (ReCapContext context =new ReCapContext())
             {
@@ -22,7 +22,7 @@ namespace DataAccess.Concrete.EntityFramework
                              on c.BrandId equals b.BrandId
                              join r in context.Colors
                              on c.ColorId equals r.ColorId
-                             select new ProductDetailDto 
+                             select new CarDetailDto 
                              {
                                  Id=c.Id,BrandName=b.BrandName,ColorName=r.ColorName,
                                  Description=c.Description,DailyPrice=c.DailyPrice
