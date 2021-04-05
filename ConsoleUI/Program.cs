@@ -16,8 +16,36 @@ namespace ConsoleUI
             //CarDailyPriceTest();
             //CarUpdateTest();
             //BrandAddTest();
+            //CarDetails();
 
-            CarDetails();
+            UserManager userManager = new UserManager(new EfUserDal());
+
+
+            var result = userManager.Add(new User
+            {
+                FirstName = "Hüseyin",
+                LastName = "Palamar",
+                Email = "huseyinpalamar39@gmail.com"
+                ,
+                Password = "123456",
+                
+
+
+            });
+
+            if (result.Success == true)
+            {
+                Console.WriteLine(result.Message);
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
+            foreach (var user in userManager.GetAll().Data)
+            {
+                Console.WriteLine(user.FirstName);
+            }
+
 
         }
 
@@ -50,7 +78,7 @@ namespace ConsoleUI
         private static void CarUpdateTest()
         {
             CarManager carManager = new CarManager(new EfCarDal());
-            var result = carManager.Update(new Car { Id = 3, ModelYear = "2008", BrandId = 1, DailyPrice = 500, ColorId = 4, Description = "2008 model kiralık araba" });
+            var result = carManager.Updated(new Car { Id = 3, ModelYear = "2008", BrandId = 1, DailyPrice = 500, ColorId = 4, Description = "2008 model kiralık araba" });
             if (result.Success == true)
             {
                 Console.WriteLine(result.Message);

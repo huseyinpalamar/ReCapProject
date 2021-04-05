@@ -27,14 +27,14 @@ namespace Business.Concrete
                 return new ErrorResult(Messages.CarNameInValid);
             }
             _carDal.Add(car);
-            return new SuccessResult(Messages.CarAdded);
+            return new SuccessResult(Messages.Added);
         }
 
         public IResult Deleted(Car car)
         {
             
             _carDal.Deleted(car);
-            return new SuccessResult(Messages.CarDeleted);
+            return new SuccessResult(Messages.Deleted);
         }
 
         public IDataResult<List<Car>> GetAll()
@@ -42,9 +42,9 @@ namespace Business.Concrete
             
             if (DateTime.Now.Hour==15)
             {
-                return new ErrorDataResult<List<Car>>(Messages.CarListingFailed);
+                return new ErrorDataResult<List<Car>>(Messages.ListingFailed);
             }
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(),Messages.CarListiningSuccessful);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(),Messages.ListiningSuccessful);
             
         }
 
@@ -56,22 +56,22 @@ namespace Business.Concrete
         public IDataResult<List<Car>> GetCarsByColorId(int colorId)
         {
            
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c=>c.ColorId==colorId),Messages.CarListiningSuccessful);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c=>c.ColorId==colorId),Messages.ListiningSuccessful);
         }
 
         public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
-            return new SuccessDataResult<List<CarDetailDto>> (_carDal.GetCarDetails(),Messages.CarListiningSuccessful);
+            return new SuccessDataResult<List<CarDetailDto>> (_carDal.GetCarDetails(),Messages.ListiningSuccessful);
         }
 
-        public IResult Update(Car car)
+        public IResult Updated(Car car)
         {
             if (DateTime.Now.Hour==15)
             {
-                return new ErrorResult(Messages.CarNotUptaded);
+                return new ErrorResult(Messages.NotUptaded);
             }
             _carDal.Update(car);
-            return new SuccessResult(Messages.CarUpdated);
+            return new SuccessResult(Messages.Updated);
         }
 
         public IDataResult<List<Car>> GetByDailyPrice(decimal min, decimal max)

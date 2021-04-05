@@ -25,25 +25,25 @@ namespace Business.Concrete
             }
 
             _brandDal.Add(brand);
-            return new SuccessResult(Messages.BrandAdded);
+            return new SuccessResult(Messages.Added);
         }
 
         public IResult Deleted(Brand brand)
         {
             _brandDal.Deleted(brand);
-            return new SuccessResult(Messages.BrandDeleted);
+            return new SuccessResult(Messages.Deleted);
         }
 
         public IDataResult<List<Brand>> GetAll()
         {
-            return new SuccessDataResult<List<Brand>> (_brandDal.GetAll(),Messages.CarListiningSuccessful);
+            return new SuccessDataResult<List<Brand>> (_brandDal.GetAll(),Messages.ListiningSuccessful);
         }
 
         public IResult Updated(Brand brand)
         {
             
             _brandDal.Update(brand);
-            return new SuccessResult(Messages.BrandUpdated);
+            return new SuccessResult(Messages.Updated);
         }
     }
 }
