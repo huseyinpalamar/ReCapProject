@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    public class UserManager : IUserServices
+    public class UserManager : IUserService
     {
         IUserDal _userDal;
 
@@ -40,9 +40,9 @@ namespace Business.Concrete
             return new SuccessDataResult<List<User>>(_userDal.GetAll(),Messages.ListiningSuccessful);
         }
 
-        public IDataResult<List<User>> GetByUserId(int userId)
+        public IDataResult<User> GetByUserId(int userId)
         {
-            return new SuccessDataResult<List<User>>(_userDal.GetAll(u=>u.Id==userId),Messages.ListiningSuccessful);
+            return new SuccessDataResult<User>(_userDal.Get(u=>u.Id==userId),Messages.ListiningSuccessful);
         }
 
         public IResult Updated(User user)

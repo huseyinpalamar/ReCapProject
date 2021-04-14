@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace Business.Concrete
 {
-    public class BrandManager : IBrandServices
+    public class BrandManager : IBrandService
     {
         IBrandDal _brandDal;
 

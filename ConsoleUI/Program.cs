@@ -17,7 +17,12 @@ namespace ConsoleUI
             //CarUpdateTest();
             //BrandAddTest();
             //CarDetails();
+            //UserTest();
 
+        }
+
+        private static void UserTest()
+        {
             UserManager userManager = new UserManager(new EfUserDal());
 
 
@@ -28,7 +33,7 @@ namespace ConsoleUI
                 Email = "huseyinpalamar39@gmail.com"
                 ,
                 Password = "123456",
-                
+
 
 
             });
@@ -45,8 +50,6 @@ namespace ConsoleUI
             {
                 Console.WriteLine(user.FirstName);
             }
-
-
         }
 
         private static void CarDetails()
