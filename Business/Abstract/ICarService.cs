@@ -18,6 +18,7 @@ namespace Business.Abstract
         IResult Add(Car car);
         IResult Updated(Car car);
         IResult Deleted(Car car);
+
         
 
     }
