@@ -1,8 +1,12 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,12 +23,10 @@ namespace Business.Concrete
             
         }
 
+        [ValidationAspect(typeof(UserValidator))]
         public IResult Add(User user)
         {
-            if (user.LastName.Length<2&&user.Password.Length<8)
-            {
-                return new SuccessResult(Messages.RegistrationFailed);
-            }
+
             _userDal.Add(user);
             return new SuccessResult(Messages.RegistrationSuccessful);
         }
